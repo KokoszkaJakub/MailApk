@@ -16,7 +16,7 @@ public class EmailApp {
         System.out.println(em1.getMailboxCapacity());
         System.out.println(em1.getPassword());*/
 
-        System.out.println(em1.showData());
+        JOptionPane.showMessageDialog(null,em1.showData());
     }
 
 }

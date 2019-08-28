@@ -1,5 +1,6 @@
 package emailapp;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Email {
@@ -25,10 +26,14 @@ public class Email {
     }
 
     public String setDepartment() {
-        System.out.print("DEPARTMENT CODE\n 1 for SALES\n 2 for DEVELOPMENT\n 3 for ACCOUNTING\n 0 for none\n " +
-                "Enter department code\n");
-        Scanner in = new Scanner(System.in);
-        int depChoice = in.nextInt();
+        String depCode = JOptionPane.showInputDialog(
+                "DEPARTMENT CODE\n " +
+                        "1 for SALES\n " +
+                        "2 for DEVELOPMENT\n " +
+                        "3 for ACCOUNTING\n " +
+                        "0 for none\n" +
+                        "Enter department code");
+        int depChoice = Integer.parseInt(depCode);
         if (depChoice == 1) {
             return "sales";
         } else if (depChoice == 2) {
