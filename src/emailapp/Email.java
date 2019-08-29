@@ -83,8 +83,3 @@ public class Email {
                 "\nYOUR PASSWORD: " + password;
     }
 }
-
-
-
-
-
