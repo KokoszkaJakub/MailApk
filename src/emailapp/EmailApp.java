@@ -3,10 +3,13 @@ package emailapp;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class EmailApp {
     public static void main(String[] args) throws Exception {
         getConnection();
+        post();
 
         String firstName = JOptionPane.showInputDialog("Podaj swoje imię");
         String lastName = JOptionPane.showInputDialog("Podaj swoje nazwisko");
@@ -39,5 +42,28 @@ public class EmailApp {
         }
         return null;
 
+
+
+    }
+    public static void post() throws Exception {
+        String var1 = "Ala";
+        String var2 = "makota";
+        String var3 = "ex@ex.com";
+        String var4 = "qwerty";
+        int var5 = 750;
+try{
+    Connection conn = getConnection();
+    PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email, password, mailboxCapacity)" +
+            "VALUES ('"+var1+"','"+var2+"','"+var3+"', '"+var4+"', '"+var5+"')");
+    posted.executeUpdate();
+
+} catch (SQLException e) {
+    e.printStackTrace();
+} catch (Exception e) {
+    e.printStackTrace();
+}
+finally {
+    System.out.println("insert completed");
+}
     }
 }

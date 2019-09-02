@@ -82,4 +82,5 @@ public class Email {
                 "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb" +
                 "\nYOUR PASSWORD: " + password;
     }
+    
 }
