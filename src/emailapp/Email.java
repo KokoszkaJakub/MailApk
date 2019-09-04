@@ -2,10 +2,10 @@ package emailapp;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Email extends emailapp.Connection {
     private String firsName;
@@ -60,48 +60,86 @@ public class Email extends emailapp.Connection {
         }
         return new String(password);
     }
-    public void setMailboxCapacity(int capacity){
+
+    public void setMailboxCapacity(int capacity) {
         this.mailboxCapacity = capacity;
 
     }
-    public  void setAlternateEmail(String altEmail){
+
+    public void setAlternateEmail(String altEmail) {
         this.alternateEmail = altEmail;
     }
-    public void changePassword(String password){
+
+    public void changePassword(String password) {
         this.password = password;
 
     }
-    public int getMailboxCapacity(){
+
+    public int getMailboxCapacity() {
         return mailboxCapacity;
     }
-    public String getAlternateEmail(){
+
+    public String getAlternateEmail() {
         return alternateEmail;
     }
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
-    public String showData(){
+
+    public String showData() {
         return "EMPLOYEE NAME: " + firsName + " " + lastName +
                 "\nCOMPANY EMAIL: " + email +
                 "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb" +
                 "\nYOUR PASSWORD: " + password;
     }
 
-    public void post() throws Exception {
+    public void postData() throws Exception {
 
-        try{
+        try {
             Connection conn = getConnection();
             PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email, password, mailboxCapacity)" +
-                    "VALUES ('"+this.firsName+"','"+this.lastName+"','"+this.email+"', '"+this.password+"', '"+this.mailboxCapacity+"')");
+                    "VALUES ('" + this.firsName + "','" + this.lastName + "','" + this.email + "', '" + this.password + "', '" + this.mailboxCapacity + "')");
             posted.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             System.out.println("insert completed");
         }
+
+
+    }
+
+    public static ArrayList<String> getData() throws Exception {
+        try {
+            getConnection();
+            PreparedStatement statement = getConnection().prepareStatement("SELECT firstName, lastName, email FROM mail");
+            ResultSet result = statement.executeQuery();
+            ArrayList<String> employee = new ArrayList<String>();
+            while (result.next()) {
+                System.out.println("Employee: ");
+                System.out.print(result.getString("firstName"));
+                System.out.print(" ");
+                System.out.println(result.getString("lastName"));
+                System.out.println("email address: ");
+                System.out.println(result.getString("email"));
+
+                employee.add(result.getString("firstName"));
+                employee.add(result.getString("lastName"));
+                employee.add(result.getString("email"));
+            }
+            return employee;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+
+
     }
 }
+
+
+

@@ -16,7 +16,10 @@ public class EmailApp extends Email{
         Email em1 = new Email(firstName, lastName);
 
         getConnection();
-        em1.post();
+        em1.postData();
+        System.out.println();
+        getData();
+
 
         JOptionPane.showMessageDialog(null,em1.showData());
     }
