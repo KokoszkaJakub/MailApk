@@ -13,10 +13,11 @@ public class EmailApp extends Email{
 
         String firstName = JOptionPane.showInputDialog("Podaj swoje imię");
         String lastName = JOptionPane.showInputDialog("Podaj swoje nazwisko");
-
         Email em1 = new Email(firstName, lastName);
+
         getConnection();
         em1.post();
+
         JOptionPane.showMessageDialog(null,em1.showData());
     }
 

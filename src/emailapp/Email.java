@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Email {
+public class Email extends emailapp.Connection {
     private String firsName;
     private String lastName;
     private String password;
@@ -81,31 +81,12 @@ public class Email {
         return password;
     }
     public String showData(){
-        return "DISPLAY NAME: " + firsName + " " + lastName +
+        return "EMPLOYEE NAME: " + firsName + " " + lastName +
                 "\nCOMPANY EMAIL: " + email +
                 "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb" +
                 "\nYOUR PASSWORD: " + password;
     }
-    public static Connection getConnection() throws Exception {
-        try {
-            String driver = "com.mysql.cj.jdbc.Driver";
-            //String url = "jdbc:mysql://localhost:3306/mailDB";
-            String url = "jdbc:mysql://localhost/mailDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String userName = "root";
-            String password = "password";
-            Class.forName(driver);
-            Connection conn = DriverManager.getConnection(url, userName, password);
 
-            ;
-            return conn;
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return null;
-
-
-
-    }
     public void post() throws Exception {
 
         try{
