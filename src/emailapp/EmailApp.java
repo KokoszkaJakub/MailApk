@@ -3,6 +3,7 @@ package emailapp;
 import javax.swing.*;
 
 
+
 public class EmailApp extends Email{
     public EmailApp(String firsName, String lastName) {
         super(firsName, lastName);
@@ -16,9 +17,10 @@ public class EmailApp extends Email{
         Email em1 = new Email(firstName, lastName);
 
         getConnection();
-        em1.postData();
-        System.out.println();
+        //em1.postData();
+        System.out.println("Date from DB email");
         getData();
+
 
 
         JOptionPane.showMessageDialog(null,em1.showData());

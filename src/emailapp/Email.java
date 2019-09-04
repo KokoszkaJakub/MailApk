@@ -23,33 +23,40 @@ public class Email extends emailapp.Connection {
         this.lastName = lastName;
         this.department = setDepartment();
 
-        email = firsName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
+        email = firsName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + companySuffix;
 
         this.password = randomPassword(defaultPasswordLength);
 
     }
 
     public String setDepartment() {
-        String depCode = JOptionPane.showInputDialog(
-                "DEPARTMENT CODE\n " +
-                        "1 for SALES\n " +
-                        "2 for DEVELOPMENT\n " +
-                        "3 for ACCOUNTING\n " +
-                        "0 for none\n" +
-                        "Enter department code");
-        int depChoice = Integer.parseInt(depCode);
-        if (depChoice == 1) {
-            return "sales";
-        } else if (depChoice == 2) {
-            return "development";
-        } else if (depChoice == 3) {
-            return "accounting";
-        } else {
+        try {
+            String depCode = JOptionPane.showInputDialog(
+                    "DEPARTMENT CODE\n " +
+                            "1 for SALES\n " +
+                            "2 for DEVELOPMENT\n " +
+                            "3 for ACCOUNTING\n " +
+                            "0 for none\n" +
+                            "Enter department code");
+
+
+            int depChoice = Integer.parseInt(depCode);
+            if (depChoice == 1) {
+                return "sales.";
+            } else if (depChoice == 2) {
+                return "development.";
+            } else if (depChoice == 3) {
+                return "accounting.";
+            } else {
+                return "";
+            }
+
+        } catch (Exception e) {
             return "";
+
         }
-
-
     }
+
 
     private String randomPassword(int length) {
         String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsTtOuWwXxYyZz123456789!@#$%&*_+";
@@ -88,11 +95,15 @@ public class Email extends emailapp.Connection {
     }
 
     public String showData() {
+
+
         return "EMPLOYEE NAME: " + firsName + " " + lastName +
                 "\nCOMPANY EMAIL: " + email +
                 "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb" +
                 "\nYOUR PASSWORD: " + password;
+
     }
+
 
     public void postData() throws Exception {
 
@@ -116,7 +127,7 @@ public class Email extends emailapp.Connection {
     public static ArrayList<String> getData() throws Exception {
         try {
             getConnection();
-            PreparedStatement statement = getConnection().prepareStatement("SELECT firstName, lastName, email FROM mail");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT firstName, lastName, email, phoneNumber FROM mail");
             ResultSet result = statement.executeQuery();
             ArrayList<String> employee = new ArrayList<String>();
             while (result.next()) {
@@ -124,8 +135,10 @@ public class Email extends emailapp.Connection {
                 System.out.print(result.getString("firstName"));
                 System.out.print(" ");
                 System.out.println(result.getString("lastName"));
-                System.out.println("email address: ");
+                System.out.print("email address: ");
                 System.out.println(result.getString("email"));
+                System.out.print("phone number: ");
+                System.out.println(result.getString("phoneNumber"));
 
                 employee.add(result.getString("firstName"));
                 employee.add(result.getString("lastName"));
