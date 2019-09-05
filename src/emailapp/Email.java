@@ -11,6 +11,7 @@ public class Email extends emailapp.Connection {
     private String firsName;
     private String lastName;
     private String password;
+    private int phoneNumber;
     private String email;
     private String department;
     private int mailboxCapacity = 750;
@@ -51,7 +52,7 @@ public class Email extends emailapp.Connection {
                 return "";
             }
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return "";
 
         }
