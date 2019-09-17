@@ -5,7 +5,9 @@ import javax.swing.*;
 
 
 public class EmailApp extends Email{
-    public EmailApp(String firsName, String lastName) {
+
+
+    public EmailApp(String firsName, String lastName, String phoneNumber) {
         super(firsName, lastName);
     }
 
@@ -14,10 +16,13 @@ public class EmailApp extends Email{
 
         String firstName = JOptionPane.showInputDialog("Podaj swoje imię");
         String lastName = JOptionPane.showInputDialog("Podaj swoje nazwisko");
+
+
+
         Email em1 = new Email(firstName, lastName);
 
         getConnection();
-        //em1.postData();
+        em1.postData();
         System.out.println("Date from DB email");
         getData();
 

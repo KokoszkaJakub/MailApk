@@ -10,12 +10,14 @@ import java.util.ArrayList;
 public class Email extends emailapp.Connection {
     private String firsName;
     private String lastName;
+    private String phoneNumber;
+    private String addressWithNumber;
+    private String zipCodeAndCity;
     private String password;
-    private int phoneNumber;
     private String email;
     private String department;
     private int mailboxCapacity = 750;
-    private int defaultPasswordLength = 10;
+    private final int defaultPasswordLength = 10;
     private String alternateEmail;
     private final String companySuffix = "company.com";
 
@@ -101,7 +103,8 @@ public class Email extends emailapp.Connection {
         return "EMPLOYEE NAME: " + firsName + " " + lastName +
                 "\nCOMPANY EMAIL: " + email +
                 "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb" +
-                "\nYOUR PASSWORD: " + password;
+                "\nYOUR PASSWORD: " + password +
+                "\nPHONE NUMBER: " + phoneNumber;
 
     }
 
@@ -110,8 +113,8 @@ public class Email extends emailapp.Connection {
 
         try {
             Connection conn = getConnection();
-            PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email, password, mailboxCapacity)" +
-                    "VALUES ('" + this.firsName + "','" + this.lastName + "','" + this.email + "', '" + this.password + "', '" + this.mailboxCapacity + "')");
+            PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email , password, mailboxCapacity)" +
+                    "VALUES ('" + this.firsName + "','" + this.lastName + "','" + this.email + "',  '" + this.password + "', '" + this.mailboxCapacity + "')");
             posted.executeUpdate();
 
         } catch (SQLException e) {
