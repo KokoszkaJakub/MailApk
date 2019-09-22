@@ -21,9 +21,10 @@ public class Email extends emailapp.Connection {
     private String alternateEmail;
     private final String companySuffix = "company.com";
 
-    public Email(String firsName, String lastName) {
+    public Email(String firsName, String lastName, String phoneNumber) {
         this.firsName = firsName;
         this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
         this.department = setDepartment();
 
         email = firsName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + companySuffix;
@@ -113,8 +114,8 @@ public class Email extends emailapp.Connection {
 
         try {
             Connection conn = getConnection();
-            PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email , password, mailboxCapacity)" +
-                    "VALUES ('" + this.firsName + "','" + this.lastName + "','" + this.email + "',  '" + this.password + "', '" + this.mailboxCapacity + "')");
+            PreparedStatement posted = conn.prepareStatement("INSERT INTO mail (firstName, lastName, email, phoneNumber, password, mailboxCapacity)" +
+                    "VALUES ('" + this.firsName + "','" + this.lastName + "','" + this.email + "', '" + this.phoneNumber + "' ,  '" + this.password + "', '" + this.mailboxCapacity + "')");
             posted.executeUpdate();
 
         } catch (SQLException e) {

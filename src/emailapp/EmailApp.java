@@ -8,7 +8,7 @@ public class EmailApp extends Email{
 
 
     public EmailApp(String firsName, String lastName, String phoneNumber) {
-        super(firsName, lastName);
+        super(firsName, lastName, phoneNumber);
     }
 
     public static void main(String[] args) throws Exception {
@@ -16,10 +16,10 @@ public class EmailApp extends Email{
 
         String firstName = JOptionPane.showInputDialog("Podaj swoje imię");
         String lastName = JOptionPane.showInputDialog("Podaj swoje nazwisko");
+        String phoneNumber = JOptionPane.showInputDialog("podaj telefon kontaktowy");
 
 
-
-        Email em1 = new Email(firstName, lastName);
+        Email em1 = new Email(firstName, lastName, phoneNumber);
 
         getConnection();
         em1.postData();
