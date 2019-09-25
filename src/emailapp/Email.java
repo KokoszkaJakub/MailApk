@@ -11,8 +11,8 @@ public class Email extends emailapp.Connection {
     private String firsName;
     private String lastName;
     private String phoneNumber;
-    private String addressWithNumber;
-    private String zipCodeAndCity;
+    //private String addressWithNumber;
+    //private String zipCodeAndCity;
     private String password;
     private String email;
     private String department;

@@ -22,12 +22,9 @@ public class EmailApp extends Email{
         Email em1 = new Email(firstName, lastName, phoneNumber);
 
         getConnection();
-        em1.postData();
+        //em1.postData();
         System.out.println("Date from DB email");
         getData();
-
-
-
         JOptionPane.showMessageDialog(null,em1.showData());
     }
 
