@@ -1,10 +1,6 @@
 package emailapp;
 
-class frm extends EmailApp {
-
-  public frm(String firsName, String lastName, String phoneNumber) {
-    super(firsName, lastName, phoneNumber);
-  }
+class frm  {
 
   public static void main(String[] args){
     MyFrame f = new MyFrame();
