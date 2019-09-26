@@ -122,8 +122,6 @@ public class Email extends emailapp.Connection {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            System.out.println("insert completed");
         }
 
 

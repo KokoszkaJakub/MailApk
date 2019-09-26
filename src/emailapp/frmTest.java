@@ -1,6 +1,6 @@
 package emailapp;
 
-class frm  {
+class frmTest {
 
   public static void main(String[] args){
     MyFrame f = new MyFrame();

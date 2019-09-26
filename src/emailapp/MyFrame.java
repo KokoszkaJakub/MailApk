@@ -72,6 +72,9 @@ class MyFrame extends JFrame {
                                             firstName = txtA.getText();
                                             lastName = txtB.getText();
                                             phoneNumber = txtC.getText();
+                                            System.out.println(lblA.getText() + " " + firstName);
+                                            System.out.println(lblB.getText() + " " + lastName);
+                                            System.out.println(lblC.getText() + " " + phoneNumber);
                                             System.exit(0);
                                         }
 
